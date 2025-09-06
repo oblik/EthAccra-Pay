@@ -1,0 +1,5 @@
+
+[package]
+name = "membership_poseidon"
+type = "bin"
+compiler_version = ">=0.25.0"

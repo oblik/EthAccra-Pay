@@ -1,0 +1,13 @@
+{
+    "name": "ethaccra-issuer",
+    "version": "0.1.0",
+    "description": "Simple issuer microservice for EthAccra demo: build Merkle root and per-user proofs",
+    "main": "issuer.js",
+    "scripts": {
+        "start": "node issuer.js beneficiaries.json"
+    },
+    "dependencies": {
+        "keccak256": "^1.0.6",
+        "merkletreejs": "^0.2.31"
+    }
+}

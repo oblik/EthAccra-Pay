@@ -1,0 +1,14 @@
+{
+    "name": "ethaccra-pay-full",
+    "version": "1.0.0",
+    "description": "EthAccra Pay Full Project",
+    "scripts": {
+        "dev": "cd app && npm run dev",
+        "build": "cd app && npm run build",
+        "test": "cd contracts && npm test",
+        "deploy": "cd contracts && npx hardhat run --network localhost scripts/deploy-local.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

@@ -1,0 +1,51 @@
+# Prover.toml — prover inputs for local/demo proving
+#
+# This file contains example public/private inputs for the membership circuit.
+# The current circuit in src/main.nr is a placeholder that sets:
+#   computed_root = leaf
+#   computed_null = leaf + nonce
+# Therefore the values below are chosen so those constraints hold.
+#
+# When you implement a real Poseidon Merkle circuit, replace these values
+# with real leaf/path/nonce and the correct team_root/nullifier/commitment.
+
+[prover]
+# team_root must equal the recomputed root in the circuit. For the placeholder circuit
+# we set leaf == team_root so set both to the same small value for convenience.
+team_root = "0x1"
+
+# nullifier must equal computed_null in the circuit. Placeholder computed_null = leaf + nonce
+# with leaf=0x1 and nonce=0x5 => nullifier = 0x6
+nullifier = "0x6"
+
+# payment_commitment must match the frontend commitment (keccak256 of [namehash, amountWei, nonce]).
+# Values provided by you:
+#   namehash: 0x551dab3cdfb3eec377845bbd2f18af86b699c43956b14d10d07c2b91ecaa1607
+#   amountWei: 10000000000000000
+#   nonce (bytes32): 0x0000000000000000000000000000000000000000000000000000000000000005
+payment_commitment = "0x9a872cf9a8bf90029dbc1a9c0ac9271c8780c6b7660f37e69bdf1f8e9a0cc06f"
+
+# Private inputs used by the circuit (placeholder values)
+leaf = "0x1"
+nonce = "0x0000000000000000000000000000000000000000000000000000000000000005"
+
+# Merkle path placeholders (16-depth). Replace with real path_elements/indices for a real leaf.
+path_elements = ["0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0","0x0"]
+path_indices = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"]
+
+# NOTE: For the frontend to successfully call the contract, the frontend computes
+# the payment commitment as:
+#   commitment = keccak256(solidityPacked([namehash(ensName), amountWei, nonce]))
+# Use the same `nonce` value here (or generate + paste the generated nonce into the frontend)
+# and set `payment_commitment` to the hex output of the above keccak256 to produce a valid flow.
+# Example (in JS with ethers):
+#   const node = namehash("company.eth")
+#   const amountWei = ethers.parseEther("0.01")
+#   const commitment = ethers.keccak256(ethers.solidityPacked(["bytes32","uint256","bytes32"], [node, amountWei, nonce]));
+#
+# After updating these values you can run:
+#   nargo prove --prover Prover.toml
+#   nargo codegen-verifier
+# then copy the generated Verifier.sol into contracts/contracts/Verifier.sol and recompile the hardhat project.
+
+# backup created by assistant

@@ -1,0 +1,13 @@
+{
+  "id": "alice",
+  "ens": "alice.refugeeaid.eth",
+  "meta": null,
+  "leaf": "0x9b66beba476b84789dbee199228255455b1d4bf0d46836511d423ef056586078",
+  "proof": [
+    "0x128bca4b15020dbec0d48e793771e104bd7d988a029c24c7e3a72696d6091c8e"
+  ],
+  "proofPositions": [
+    1
+  ],
+  "root": "0xc7fda2db22ee9340a04519a4567dcce37b4b2bb9c4e858882ece013197093f04"
+}
